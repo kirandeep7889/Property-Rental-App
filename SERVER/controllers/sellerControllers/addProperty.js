@@ -10,14 +10,18 @@ const addProperty = async (req, res) => {
       return res.status(404).json({ error: 'User not found' });
     }
 
-    const { property_name, description, price, location } = req.body;
+    const { property_name, description, price, location, bedrooms, parking, imageUrls, bathrooms } = req.body;
 
     const newProperty = await Property.create({
       seller_id: user._id,
       property_name,
       description,
       price,
-      location
+      location,
+      bedrooms,
+      parking,
+      imageUrls,
+      bathrooms
     });
 
     res.status(201).json({ message: 'Property added successfully', property: newProperty });

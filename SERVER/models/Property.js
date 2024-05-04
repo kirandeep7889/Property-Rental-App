@@ -5,23 +5,34 @@ const propertySchema = new mongoose.Schema({
          ref: 'User',
           required: true
          },
-    property_name: { type: String,
+     property_name: { type: String,
          required: true
          },
-    description: { type: String,
+     description: { type: String,
          required: true
          },
-    beds: {
-     type:Number,
-     default:5
-    },     
-    price: { type: Number,
+         bedrooms: {
+          type: Number,
+          required: true,
+        },
+     price: { type: Number,
          required: true
          },
-    location: { type: String, 
+     location: { type: String, 
         required: true
      },
-
+     parking: {
+          type: Boolean,
+          required: true,
+        },
+     imageUrls: {
+          type: Array,
+          required: true,
+        },   
+     bathrooms: {
+          type: Number,
+          required: true,
+        },
   });
   
   const Property = mongoose.model('Property', propertySchema);
