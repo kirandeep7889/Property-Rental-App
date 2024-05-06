@@ -9,6 +9,7 @@ import PrivateRoute from './components/core/Auth/PrivateRoute'
 import Settings from './components/core/Dashboard/Settings'
 import MyProfile from './components/core/Dashboard/MyProfile'
 import Footer from './components/common/Footer/Footer'
+import Listing from './components/core/Home/Listing'
 
 function App() {
    
@@ -21,13 +22,14 @@ function App() {
           <Route path="/" element={<Home/>}/>
           <Route path='/login' element={<Login/>}/>
           <Route path='/Signup' element={<Signup/>}/>
+          <Route path='/listing/:listingId' element={<Listing/>} />
           <Route element={<PrivateRoute><Dashboard/></PrivateRoute>}>
             <Route path="/dashboard/my-profile" element={<MyProfile/>}/>
             <Route path="/dashboard/settings" element={<Settings/>}/>
           </Route>  
         </Routes>
       </div>
-      <Footer/>
+      {/* <Footer/> */}
     </div>
   )
 

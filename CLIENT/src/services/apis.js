@@ -20,3 +20,10 @@ export const settingsEndpoints = {
     UPDATE_PASSWORD_API : BASE_URL + "/profile/updatePassword",
     DELETE_PROFILE_API : BASE_URL + "/profile/deleteProfile"
 }
+
+
+//Get All Properties
+export const PropertiesEndpoints={
+    ALLPROPERTIES_API :   BASE_URL + "/seller/allProperties",
+    PROPERTY_API: BASE_URL + "/properties/:id"
+}

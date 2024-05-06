@@ -7,37 +7,33 @@ import { useSelector } from 'react-redux';
 import ProfileDropDown from '../core/Navbar/ProfileDropDown';
 
 const NavBar = () => {
-  const location=useLocation();
+  
   const {token} = useSelector((state) => state.auth);
-
-  const matchRoute = (route) => {
-    return matchPath({path:route}, location.pathname);
-}
 
 
   return (
-    <div className={` fixed w-full z-[9999] border-b-[2px] border-b-richblack-700  bg-richblack-800 top-0 h-16`}>
-    <div className='flex w-11/12 max-w-maxContent items-center justify-between mx-auto'>
-        
-        <Link to="/">
-          <img className='p-3' src={Logo} alt="logo" width={160} height={8} loading='lazy'/>
+    <header className='bg-slate-200 shadow-md'>
+      <div className='flex justify-between items-center max-w-6xl mx-auto p-3'>
+        <Link to='/'>
+          <h1 className='font-bold text-sm sm:text-xl flex flex-wrap'>
+            <span className='text-slate-500'>Real</span>
+            <span className='text-slate-700'>Estate</span>
+          </h1>
         </Link>
-        <ul className='flex items-center gap-x-6 text-richblack-25 '>
-             {
-              NavbarLinks.map((link,index)=> {
-                return (
-                  <li key={index}>
-                    <Link to={link?.path}>
-                        <p className={`${matchRoute(link?.path) ? "font-bold underline" :  ""}`}>
-                                {link.title}
-                        </p>
-                     </Link>
-                  </li>
-                )
-              })
-             }
-        </ul>
-          {
+        <ul className='flex gap-4'>
+          <Link to='/'>
+            <li className='hidden sm:inline text-slate-700 hover:underline'>
+              Home
+            </li>
+          </Link>
+          <Link to='/about'>
+            <li className='hidden sm:inline text-slate-700 hover:underline'>
+              About
+            </li>
+          </Link>
+        </ul> 
+        <div>
+        {
             token==null && (
               <div className='mr-2 flex gap-x-2'>
                   <LogBtn  link={"/login"} text={"Log In"}/>
@@ -46,11 +42,17 @@ const NavBar = () => {
             )
           }
             {
-              token !== null && <ProfileDropDown/>
+              token !== null && 
+              <div className='flex flex-row items-center gap-x-4'>
+               <button className=' text-slate-700 hover:font-semibold hover:underline'><Link to="">My Bookings</Link></button> 
+               <ProfileDropDown/>
+              </div>
             }
-    </div>
-    </div>
 
+        </div>
+
+      </div>
+    </header>    
   )
 }
 

@@ -13,7 +13,6 @@ function Dashboard() {
   return (
     <div>
       <div className=' relative'>
-        <NavBar />
       </div>
       <div className='flex pt-[50px]'>
           <div className=' relative w-[15%]'>
