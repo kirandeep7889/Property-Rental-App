@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Hero from '../components/common/Hero/Hero';
 import '../App.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -7,6 +6,7 @@ import { PropertiesEndpoints } from '../services/apis';
 import { allProperties } from '../services/operations/PropertiesAPI';
 import ListingItem from '../components/core/Home/ListingItem';
 import { useDispatch } from 'react-redux';
+import Spinner from '../components/common/Spinner';
 
 const Home = () => {
   const [listings, setListings] = useState([]);
@@ -34,6 +34,7 @@ const Home = () => {
   console.log(listings)
   return (
     <div>
+      {loading && <div className=' absolute grid place-content-center h-screen w-screen'><Spinner/></div>}
       <div className='flex flex-col gap-6 justify-center  px-3 max-w-6xl mx-auto'>
         <h1 className='text-slate-700 mt-16 font-bold text-3xl lg:text-6xl'>
           Find your next <span className='text-slate-500'>perfect</span>

@@ -66,7 +66,6 @@ export function updateUserDetails({token,firstName, lastName, dateOfBirth, gende
 
 export function updatePassword({token, oldPassword, newPassword}){
     return async(dispatch) => {
-        const toastId = toast.loading("Loading...")
         try{
             const response = await apiConnector("PUT", UPDATE_PASSWORD_API,{
                 oldPassword, newPassword
@@ -84,7 +83,6 @@ export function updatePassword({token, oldPassword, newPassword}){
             console.log("PASSWORD CHANGED FAILED")
             toast.error("Password Updation Failed")
         }
-        toast.dismiss(toastId)
     }
 }
 

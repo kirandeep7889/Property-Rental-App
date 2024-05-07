@@ -35,12 +35,12 @@ function MyProfile() {
         },
       ]
   return (
-    <div className='pb-9'>
-      <p className=' text-richblack-300 text-sm left-6 font-normal'>Home / Dashboard / <span className=' text-yellow-50'>My Profile</span></p>
+    <div className='p-10'>
+      <p className=' text-richblack-300 text-lg left-6 font-semibold'>Home / Dashboard / <span className=' text-yellow-900 font-semibold'>My Profile</span></p>
       <h1 className=' text-3xl font-normal py-3 text-richblack-5'>My Profile</h1>
       <div className=' flex items-center justify-center flex-col gap-5 w-[75%] mx-auto'>
       {/* SECTION 1 */}
-        <div className=' flex gap-6 w-full justify-around items-center border-[1px] border-richblack-700 p-8 rounded-lg bg-richblack-800'>
+        <div className=' flex gap-6 w-full justify-around items-center border-[1px] border-richblack-700 p-8 rounded-lg bg-slate-200'>
           <img src={user?.image} alt={`profile-${user.firstName}`} className=' aspect-square rounded-full object-cover h-20'/>
           <div className=' w-[80%]'>
             <p className='font-semibold text-xl text-richblack-5'>{user.firstName + " " + user.lastName}</p>
@@ -49,7 +49,7 @@ function MyProfile() {
           <IconBtn text={"Edit"} onclick={() => navigate("/dashboard/settings")}><FiEdit/></IconBtn>
         </div>
         {/* SECTION 2 */}
-        <div className=' flex gap-6 w-full flex-col border-[1px] border-richblack-700 p-8 rounded-lg bg-richblack-800'>
+        <div className=' flex gap-6 w-full flex-col border-[1px] border-richblack-700 p-8 rounded-lg bg-slate-200'>
         <div className=' flex justify-between items-start'>
             <p className=' font-semibold text-xl text-richblack-5'>Personal Details</p>
             <IconBtn text={"Edit"} onclick={() => navigate("/dashboard/settings")}><FiEdit/></IconBtn>

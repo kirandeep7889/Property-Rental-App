@@ -4,12 +4,12 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import NavBar from './components/common/NavBar'
-import Dashboard from './pages/DashBoard'
 import PrivateRoute from './components/core/Auth/PrivateRoute'
 import Settings from './components/core/Dashboard/Settings'
 import MyProfile from './components/core/Dashboard/MyProfile'
 import Footer from './components/common/Footer/Footer'
 import Listing from './components/core/Home/Listing'
+import About from './pages/About'
 
 function App() {
    
@@ -20,16 +20,15 @@ function App() {
       <div>
         <Routes>
           <Route path="/" element={<Home/>}/>
+          <Route path="/about" element={<About/>}/>
           <Route path='/login' element={<Login/>}/>
           <Route path='/Signup' element={<Signup/>}/>
           <Route path='/listing/:listingId' element={<Listing/>} />
-          <Route element={<PrivateRoute><Dashboard/></PrivateRoute>}>
-            <Route path="/dashboard/my-profile" element={<MyProfile/>}/>
-            <Route path="/dashboard/settings" element={<Settings/>}/>
-          </Route>  
+          <Route path="/dashboard/my-profile" element={<MyProfile/>}/>
+          <Route path="/dashboard/settings" element={<Settings/>}/>
         </Routes>
       </div>
-      {/* <Footer/> */}
+      <Footer/>
     </div>
   )
 

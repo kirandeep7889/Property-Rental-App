@@ -17,6 +17,8 @@ export default function ProfileDropDown() {
   useOnClickOutside(ref, () => setOpen(false))
 
   if(!user) return null
+
+  console.log(user)
     
   return (
     <div className='cursor-pointer relative ' onClick={() => setOpen(true)}>
@@ -32,6 +34,30 @@ export default function ProfileDropDown() {
                     Dashboard
                   </p>
               </Link>
+              {
+                  user.role=== "buyer"  ?  
+                  <Link to={'/dashboard/Customer-Bookings'}>
+                      <p className='rounded-lg text-black bg-slate-200 py-2 pl-2 hover:bg-slate-100 flex place-items-center gap-2' onClick={() => setOpen(false)}>
+                        <VscDashboard className="text-lg"/>
+                           Customer Bookings
+                      </p>
+                  </Link>
+              : 
+              <div>
+              <Link to={'/dashboard/Seller-Bookings'}>
+                  <p className='rounded-lg text-black bg-slate-200 py-2 pl-2 hover:bg-slate-100 flex place-items-center gap-2' onClick={() => setOpen(false)}>
+                    <VscDashboard className="text-lg"/>
+                      Seller Bookings
+                  </p>
+              </Link>
+              <Link to={'/dashboard/Add-Property'}>
+                  <p className='rounded-lg text-black bg-slate-200 py-2 pl-2 hover:bg-slate-100 flex place-items-center gap-2' onClick={() => setOpen(false)}>
+                    <VscDashboard className="text-lg"/>
+                     Add Property
+                  </p>
+              </Link>
+              </div>
+              }
               <div className='rounded-lg text-black bg-slate-200 py-2 pl-2 hover:bg-slate-100 flex place-items-center gap-2' onClick={() => { setConfirmationModal({
                                                                                                 text1: "Are You Sure?",
                                                                                                 text2: "You Will be Logged Out of Your Account",

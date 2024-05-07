@@ -2,13 +2,15 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { AiOutlineEye, AiOutlineEyeInvisible} from "react-icons/ai";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../services/operations/authAPI';
+import Spinner from '../components/common/Spinner';
 
 
 
 const Login = () => {
     const { register, handleSubmit } = useForm();
+    const {loading}=useSelector((state)=>state.auth)
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -19,7 +21,9 @@ const Login = () => {
     };
 
     return (
+ 
         <div className=' w-full  flex flex-col justify-center  mt-40  items-center '>
+            {loading && <div className=' absolute grid place-content-center h-screen w-screen'><Spinner/></div>}
         <div className=' w-full flex justify-center items-center'>
             <div className="w-full rounded-lg shadow bg-gray-300 sm:max-w-md xl:p-0">
                 <div className="p-6 space-y-4 md:space-y-6 sm:p-8 ">

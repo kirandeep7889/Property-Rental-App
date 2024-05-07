@@ -32,12 +32,13 @@ function PasswordUpdate() {
       }, [reset,isSubmitSuccessful])
       
   return (
-    <div className=' flex flex-col gap-5 w-full border-[1px] border-richblack-700 p-5 pb-10 rounded-lg mt-12 bg-richblack-800 relative'>
-        <p className='font-normal text-lg text-richblack-5'>Update Password</p>
+    <div className=' flex flex-col gap-5 w-full border-[1px]  p-5 pb-10 rounded-lg mt-12 bg-slate-200 relative'>
+        <p className='font-normal text-lg text-black'>Update Password</p>
         <form className=' grid grid-cols-2 gap-x-8 gap-y-5' onSubmit={handleSubmit(onSubmit)}>
             <label className='relative'>
-                <p className=" form-field-title">Current Password</p>
-                <input disabled={loading} type={showOldPassword ? ("text"):("password")} placeholder='Enter Current Password' {...register("oldPassword", {required : true})} className="form-field"/>
+                <p className="text-[0.875rem] text-black mb-1 leading-[1.375rem]">Current Password</p>
+                <input disabled={loading} type={showOldPassword ? ("text"):("password")} placeholder='Enter Current Password' {...register("oldPassword", {required : true})} 
+                className="bg-slate-100 rounded-[0.5rem] text-richblack-5 w-full p-[12px] border-b-[1px] border-black"/>
                 <span className="absolute top-[125px] right-3 sm:top-[38px] cursor-pointer"
                     onClick={() => setShowOldPassword((prev) => !prev)}>
                     {showOldPassword ? <AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF"/> : <AiOutlineEye fontSize={24} fill="#AFB2BF"/>}
@@ -47,8 +48,8 @@ function PasswordUpdate() {
                 }
             </label>
             <label className='relative'>
-                <p className=" form-field-title">New Password</p>
-                <input disabled={loading} type={showNewPassword ? ("text"):("password")} placeholder='Enter New Password' {...register("newPassword", {required : true})} className="form-field"/>
+                <p className="text-[0.875rem] text-black mb-1 leading-[1.375rem]">New Password</p>
+                <input disabled={loading} type={showNewPassword ? ("text"):("password")} placeholder='Enter New Password' {...register("newPassword", {required : true})} className="bg-slate-100 rounded-[0.5rem] text-richblack-5 w-full p-[12px] border-b-[1px] border-black"/>
                 <span className="absolute top-[125px] right-3 sm:top-[38px] cursor-pointer"
                     onClick={() => setShowNewPassword((prev) => !prev)}>
                     { showNewPassword ? <AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF"/> : <AiOutlineEye fontSize={24} fill="#AFB2BF"/>}
@@ -60,10 +61,12 @@ function PasswordUpdate() {
             <div className=' w-full left-0 flex gap-4 absolute -bottom-12 justify-end items-center'>
                 {
                     !loading && (<div>
-                        <button onClick={() => navigate('/dashboard/my-profile')} disabled={loading} className=' common-btn bg-richblack-700 text-richblack-5 py-1 px-5'>Cancel</button>
+                        <button onClick={() => navigate('/dashboard/my-profile')} disabled={loading} className='text-center text-sm md:text-base font-medium rounded-md leading-6 
+                        hover:scale-95 transition-all duration-200 bg-slate-900 text-white py-1 px-5'>Cancel</button>
                     </div>)
                 }
-                <button type='submit' onClick={handleSubmit} disabled={loading} className={` ${loading ?  "bg-richblack-700 text-richblack-5" : "bg-yellow-50 text-richblack-900"} common-btn flex place-items-center gap-2 py-1 px-5`}>{loading ? "Updating..." : "Update"}</button>
+                <button type='submit' onClick={handleSubmit} disabled={loading} 
+                className={` ${loading ?  "bg-slate-900 text-white" : " bg-yellow-600 text-black"} text-center text-sm md:text-base font-medium rounded-md leading-6 hover:scale-95 transition-all duration-200 flex place-items-center gap-2 py-1 px-5`}>{loading ? "Updating..." : "Update"}</button>
             </div>
         </form>
     </div>

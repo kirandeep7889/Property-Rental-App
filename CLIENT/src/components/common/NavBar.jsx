@@ -2,7 +2,6 @@ import React from 'react'
 import LogBtn from '../core/Navbar/LogBtn';
 import { NavbarLinks } from '../../data/NavbarLinks';
 import { Link, matchPath, useLocation } from 'react-router-dom';
-import Logo from "../../assets/Images/logo.png"
 import { useSelector } from 'react-redux';
 import ProfileDropDown from '../core/Navbar/ProfileDropDown';
 
@@ -22,12 +21,12 @@ const NavBar = () => {
         </Link>
         <ul className='flex gap-4'>
           <Link to='/'>
-            <li className='hidden sm:inline text-slate-700 hover:underline'>
+            <li className=' sm:inline text-slate-700 hover:underline'>
               Home
             </li>
           </Link>
           <Link to='/about'>
-            <li className='hidden sm:inline text-slate-700 hover:underline'>
+            <li className=' sm:inline text-slate-700 hover:underline'>
               About
             </li>
           </Link>
@@ -44,13 +43,10 @@ const NavBar = () => {
             {
               token !== null && 
               <div className='flex flex-row items-center gap-x-4'>
-               <button className=' text-slate-700 hover:font-semibold hover:underline'><Link to="">My Bookings</Link></button> 
                <ProfileDropDown/>
               </div>
             }
-
         </div>
-
       </div>
     </header>    
   )

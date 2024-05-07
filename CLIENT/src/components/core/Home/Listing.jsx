@@ -16,10 +16,9 @@ import {
   FaChair,
   FaMapMarkerAlt,
   FaParking,
-  FaShare,
 } from 'react-icons/fa';
-// import { getProperty } from '../../../services/operations/PropertiesAPI';
 import axios from 'axios';
+import Spinner from '../../common/Spinner';
 
 
 export default function Listing() {
@@ -56,7 +55,7 @@ export default function Listing() {
         endDate: dateRange[0].endDate.toDateString(),
       }
      console.log(bookingForm)
-     const response = await axios.post("http://localhost:4000/api/v1/bookings/create", bookingForm, {
+     const response = await axios.post("https://property-rental-app-1.onrender.com/api/v1/bookings/create", bookingForm, {
       headers: {
         "Authorization": `Bearer ${token}`,
       },
@@ -98,7 +97,7 @@ export default function Listing() {
 
   return (
     <div>
-      {loading && <p className='text-center my-7 text-2xl'>Loading...</p>}
+      {loading && <div className=' absolute grid place-content-center h-screen w-screen'><Spinner/></div>}
       {error && (
         <p className='text-center my-7 text-2xl'>Something went wrong!</p>
       )}
@@ -125,7 +124,7 @@ export default function Listing() {
               <span className='font-semibold text-black'>Description - </span>
               {listing.description}
             </p>
-            <p className='flex items-center p-2 md:flex md:items-center  gap-2 text-slate-600  text-sm'>
+            <p className='flex items-center p- md:flex md:items-center  gap-2 text-slate-600  text-sm'>
               <FaMapMarkerAlt className='text-green-700' />
               {listing.location}
             </p>
@@ -137,7 +136,7 @@ export default function Listing() {
                   ? `${listing.bedrooms} beds `
                   : `${listing.bedrooms} bed `}
               </li>
-              <li className='flex items-center gap-1 whitespace-nowrap '>
+              <li className='flex items-center  p-2 gap-1 whitespace-nowrap '>
                 <FaBath className='text-lg' />
                 {listing.bathrooms > 1
                   ? `${listing.bathrooms} baths `
@@ -154,20 +153,20 @@ export default function Listing() {
             </ul>
             <div className='mt-5 flex gap-x-20 items-center'>
               <div>
-                  <h2 className='text-lg font-semibold'>How long do you want to stay?</h2>
-                <div className="mt-10">
+                <h2 className='text-lg font-semibold'>How long do you want to stay?</h2>
+                <div className="mt-10 flex flex-col md:flex md:flex-row md:items-center md:gap-10">
                   <DateRange ranges={dateRange} onChange={handleSelect} />
+                  <div> 
+                    <h2 className='text-slate-600 font-bold'>Total price: ${listing.price}</h2>
+                    <p className='text-slate-600'>Start Date: {dateRange[0].startDate.toDateString()}</p>
+                    <p className='text-slate-600'>End Date: {dateRange[0].endDate.toDateString()}</p>
+
+                    <button className="bg-red-600 w-full p-2 rounded-lg mt-3 text-white hover:scale-95 transition-all duration-200 hover:font-semibold" type="submit" onClick={handleSubmit}>
+                      BOOKING
+                    </button>
+                  </div>
                 </div> 
               </div>  
-              <div> 
-              <h2 className='text-slate-600 font-bold'>Total price: ${listing.price}</h2>
-              <p className='text-slate-600'>Start Date: {dateRange[0].startDate.toDateString()}</p>
-              <p className='text-slate-600'>End Date: {dateRange[0].endDate.toDateString()}</p>
-
-              <button className="bg-red-600 w-full p-2 rounded-lg mt-3 text-white hover:scale-95 transition-all duration-200 hover:font-semibold" type="submit" onClick={handleSubmit}>
-                BOOKING
-              </button>
-            </div>
             </div>
 
           </div>
