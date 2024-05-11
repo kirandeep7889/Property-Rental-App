@@ -2,11 +2,11 @@ const Property = require("../../models/Property");
 
 async function filterProperties (req, res) {
     try {
-      const { location, minPrice, maxPrice, minBeds, maxBeds } = req.query;
+      const { searchTerm, minPrice, maxPrice, minBeds, maxBeds } = req.query;
       let filter = {};
   
-      if (location) {
-        filter.location = location;
+      if (searchTerm) {
+        filter.searchTerm = searchTerm;
       }
       if (minPrice || maxPrice) {
         filter.price = {};
