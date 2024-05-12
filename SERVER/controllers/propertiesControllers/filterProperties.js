@@ -2,7 +2,9 @@ const Property = require("../../models/Property");
 
 async function filterProperties (req, res) {
     try {
+      console.log("hello")
       const { searchTerm, minPrice, maxPrice, minBeds, maxBeds } = req.query;
+      console.log(searchTerm)
       let filter = {};
   
       if (searchTerm) {
@@ -28,6 +30,7 @@ async function filterProperties (req, res) {
       }
   
       const properties = await Property.find(filter);
+      console.log(properties)
       res.status(200).json(properties);
     } catch (error) {
       console.error(error);

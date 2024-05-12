@@ -1,20 +1,20 @@
 const express=require("express");
 const auth = require("../middlewares/auth");
 const checkIsBuyer = require("../middlewares/isBuyer");
-const createBuyerBooking = require("../controllers/BookingControllers/BuyerBookingControllers/createBuyerBooking");
 const getBuyerBookings = require("../controllers/BookingControllers/BuyerBookingControllers/getBuyerBooking");
 const checkIsSeller = require("../middlewares/isSeller");
 const getSellerBookings = require("../controllers/BookingControllers/SellerBookingControllers/getSellerBookings");
 const approveBooking = require("../controllers/BookingControllers/SellerBookingControllers/approveBooking");
 const deleteBooking = require("../controllers/BookingControllers/SellerBookingControllers/deleteBooking");
 const deleteBuyerBooking = require("../controllers/BookingControllers/BuyerBookingControllers/deleteBuyerBooking");
+const checkAvailability = require("../controllers/BookingControllers/BuyerBookingControllers/checkAvailability");
 const bookingRouter=express.Router();
 
 
 //BUYER BOOKING ROUTES
 
 //1.Route for booking  
-bookingRouter.post("/create", auth ,checkIsBuyer,createBuyerBooking);
+bookingRouter.post("/check-availability", auth ,checkIsBuyer, checkAvailability);
 //2.Route for getting all buyer bookings
 bookingRouter.get("/buyer/:userId",auth,checkIsBuyer,getBuyerBookings);
 //3.Route for deleting a specific booking
