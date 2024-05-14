@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import { updateUserDetails } from '../services/operations/settingsApi';
 
 const ConfirmBookingPage = () => {
     const location = useLocation();
+    const dispatch = useDispatch()
     const { user } = useSelector((state) => state.profile);
     const bookingForm = location.state ? location.state.bookingForm : null;
     const {token}=useSelector((state)=>state.auth);
+    const [ loading,setLoading ] = useState(false)
+
 
     console.log(bookingForm)
     const { register, handleSubmit } = useForm({
@@ -29,7 +33,16 @@ const ConfirmBookingPage = () => {
               "Authorization": `Bearer ${token}`,
             },
           });
-          console.log(response)
+          if(data) {
+            console.log(data);
+            data.token = token
+            try{
+                setLoading(true)
+                dispatch(updateUserDetails(data)).then(() => setLoading(false))
+            }catch(err){
+                console.log("PROFILE UPDATION FAILED",err)
+            }
+          }
           toast.success(response?.data?.message);
           navigate("/");
         }   
@@ -52,7 +65,7 @@ const ConfirmBookingPage = () => {
                     </label>
                     <label className='mt-4'>
                         <p className="text-[0.875rem] mt-4 text-slate-900 mb-1 leading-[1.375rem] font-semibold">Contact</p>
-                        <input className="bg-slate-50 rounded-[0.5rem]  w-full p-[12px] border-b-[1px] border-slate-800" type="text" name="contact" {...register("contact")} placeholder="Enter Your Contact Number" data-testid="contact-input" />
+                        <input className="bg-slate-50 rounded-[0.5rem]  w-full p-[12px] border-b-[1px] border-slate-800" type="text" name="contactNumber" {...register("contactNumber")} placeholder="Enter Your Contact Number" data-testid="contact-input" />
                     </label>
                     <button className="bg-red-600 w-full p-2 rounded-lg mt-5 text-white hover:scale-95 transition-all duration-200 
                      hover:font-semibold"  type="submit">Confirm Booking</button>
