@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { MdLocationOn } from 'react-icons/md';
 
 export default function ListingItem({ listing }) {
-    console.log(listing)
+    console.log(listing);
 
   return (
     <div className='bg-white shadow-md hover:shadow-lg transition-shadow overflow-hidden rounded-lg w-full sm:w-[330px]'>
@@ -16,7 +16,7 @@ export default function ListingItem({ listing }) {
         />
         <div className='p-3 flex flex-col gap-2 w-full'>
           <p className='truncate text-lg font-semibold text-slate-700'>
-            {listing.name}
+            {listing?.property_name}
           </p>
           <div className='flex items-center gap-1'>
             <MdLocationOn className='h-4 w-4 text-green-700' />
@@ -40,6 +40,9 @@ export default function ListingItem({ listing }) {
                 : `${listing.bathrooms} bath `}
             </div>
           </div>
+          <div className='font-bold text-xs'>
+              Rs.{listing?.price}
+            </div>
           <div className='w-full bg-red-500 p-2 rounded-lg text-center text-white hover:scale-95 transition-all duration-200 hover:font-semibold'>
             <Link  to={`/listing/${listing._id}`}>More Info</Link>
           </div>

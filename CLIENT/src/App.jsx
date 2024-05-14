@@ -10,6 +10,9 @@ import MyProfile from './components/core/Dashboard/MyProfile'
 import Footer from './components/common/Footer/Footer'
 import Listing from './components/core/Home/Listing'
 import About from './pages/About'
+import Search from './pages/search'
+import PropertySelectionPage from './pages/PropertySelectionPage'
+import ConfirmBookingPage from './pages/ConfirmBooking'
 
 function App() {
    
@@ -22,8 +25,11 @@ function App() {
           <Route path="/" element={<Home/>}/>
           <Route path="/about" element={<About/>}/>
           <Route path='/login' element={<Login/>}/>
+          <Route path='/search' element={<Search />} />
           <Route path='/Signup' element={<Signup/>}/>
+          <Route path='/confirmBooking/:listingId' element={<ConfirmBookingPage/>} />
           <Route path='/listing/:listingId' element={<Listing/>} />
+          <Route path='/ProperySelection/:listingId' element={<PropertySelectionPage/>} />
           <Route path="/dashboard/my-profile" element={<MyProfile/>}/>
           <Route path="/dashboard/settings" element={<Settings/>}/>
         </Routes>
