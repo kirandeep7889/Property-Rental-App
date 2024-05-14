@@ -15,6 +15,10 @@ const propertySchema = new mongoose.Schema({
           type: Number,
           required: true,
         },
+        furnished: {
+          type: Boolean,
+          required: true,
+        },    
      price: { type: Number,
          required: true
          },

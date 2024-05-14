@@ -27,23 +27,12 @@ const User = require("../../../models/User");
           success:false,
           message: 'Property is already booked for the specified dates' });
       }
-  
-  //     const property = await Property.findById(propertyId);
-  //     if (!property) {
-  //       return res.status(404).json({
-  //          error: 'Property not found' });
-  //     }
-  
-      
-  //     const newBooking =  await Booking.create({
-  //       propertyId,
-  //       userId:user._id,
-  //       startDate,
-  //       endDate
-  //     })
-  //     console.log(newBooking)
-  
-  //     res.status(201).json({ message: 'Booking created successfully', booking: newBooking });
+      else{
+      return res.status(200).json({
+         success:true,
+         message: "Available for booking"
+      })
+    }
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: 'Internal server error' });
