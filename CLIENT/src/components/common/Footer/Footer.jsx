@@ -4,7 +4,7 @@ import Logo2 from "../../../assets/Images/logo2.png"
 const Footer = () => {
   return (
     <div className="flex justify-center p-2">
-    <div className=" p-2  z-[9999] border-t-[2px] border-t-richblack-700 shadow-lg rounded-lg  bg-slate-200 bottom-0 w-full ">
+    <div className=" fixed p-2  z-[9999] border-t-[2px] border-t-richblack-700 shadow-lg rounded-lg  bg-slate-200 bottom-0 w-full ">
       <div className=" flex justify-between items-center">
         {/* left side */}
         <div className=" flex flex-col justify-center items-center gap-4">

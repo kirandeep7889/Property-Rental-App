@@ -44,6 +44,12 @@ export default function ProfileDropDown() {
                   </Link>
               : 
               <div>
+              <Link to={'dashboard/seller/Properties'}>
+                  <p className='rounded-lg text-black bg-slate-200 py-2 pl-2 hover:bg-slate-100 flex place-items-center gap-2' onClick={() => setOpen(false)}>
+                    <VscDashboard className="text-lg"/>
+                      Seller Properties
+                  </p>
+              </Link>
               <Link to={'/dashboard/Seller-Bookings'}>
                   <p className='rounded-lg text-black bg-slate-200 py-2 pl-2 hover:bg-slate-100 flex place-items-center gap-2' onClick={() => setOpen(false)}>
                     <VscDashboard className="text-lg"/>

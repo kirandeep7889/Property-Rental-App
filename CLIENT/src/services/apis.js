@@ -27,3 +27,10 @@ export const PropertiesEndpoints={
     ALLPROPERTIES_API :   BASE_URL + "/seller/allProperties",
     PROPERTY_API: BASE_URL + "/properties/:id"
 }
+
+//Seller Endpoints
+export const SellerEndpoints= {
+    Add_Seller_Property_API : BASE_URL + '/seller/addProperty',
+    Edit_Seller_Property_API :BASE_URL + '/seller/editProperty',
+    Delete_Seller_Property_API : BASE_URL + '/seller/deleteProperty'
+}

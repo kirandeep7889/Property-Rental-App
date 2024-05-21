@@ -1,5 +1,4 @@
 const {ALLPROPERTIES_API,PROPERTY_API}=PropertiesEndpoints
-import { setLoading, setToken} from "../../slices/authSlice.js"
 import { apiConnector } from "../apiconnector.js"
 import { PropertiesEndpoints } from "../apis.js"
 

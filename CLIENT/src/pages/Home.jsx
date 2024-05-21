@@ -33,9 +33,9 @@ const Home = () => {
 
   console.log(listings)
   return (
-    <div>
+    <div className='h-screen '>
       {loading && <div className=' absolute grid place-content-center h-screen w-screen'><Spinner/></div>}
-      <div className='flex flex-col gap-6 justify-center  px-3 max-w-6xl mx-auto'>
+      <div className='flex flex-col gap-6 justify-center  px-3 max-w-6xl mx-auto '>
         <h1 className='text-slate-700 mt-16 font-bold text-3xl lg:text-6xl'>
           Find your next <span className='text-slate-500'>perfect</span>
           <br />
@@ -56,7 +56,7 @@ const Home = () => {
           <div className='my-7'>
             <h2 className='text-2xl font-semibold text-slate-600'>Explore These Properties</h2>
           </div>
-          <div className='flex flex-wrap gap-4'>
+          <div className='flex flex-wrap gap-4 mb-32'>
             {listings.map((listing) => (
               <ListingItem listing={listing} key={listing._id} />
             ))}

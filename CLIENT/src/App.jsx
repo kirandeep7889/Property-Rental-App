@@ -13,6 +13,9 @@ import About from './pages/About'
 import Search from './pages/search'
 import PropertySelectionPage from './pages/PropertySelectionPage'
 import ConfirmBookingPage from './pages/ConfirmBooking'
+import AddProperty from './pages/AddProperty'
+import SellerProperties from './pages/SellerProperties'
+import EditProperty from './pages/UpdateProperty'
 
 function App() {
    
@@ -31,7 +34,11 @@ function App() {
           <Route path='/listing/:listingId' element={<Listing/>} />
           <Route path='/ProperySelection/:listingId' element={<PropertySelectionPage/>} />
           <Route path="/dashboard/my-profile" element={<MyProfile/>}/>
+          <Route path='/dashboard/Add-Property' element={<AddProperty/>} />
+          <Route path='/update-listing/:propertyId' element={<EditProperty/>} />
+          <Route path='/dashboard/seller/Properties' element={<SellerProperties/>} />
           <Route path="/dashboard/settings" element={<Settings/>}/>
+
         </Routes>
       </div>
       <Footer/>
